@@ -47,7 +47,7 @@ router.post("/diet/add", dietPlanController.add)
 router.post("/diet/all", dietPlanController.getall) 
 router.post("/diet/update", dietPlanController.update)
 router.post("/diet/delete", dietPlanController.deleteOne)
-router.post("/diet/changestatus", dietPlanController.changestatus)
+// router.post("/diet/changestatus", dietPlanController.changestatus)
 router.post("/diet/getsingle", dietPlanController.getSingle)
 
 

@@ -159,7 +159,49 @@ const update = (req, res) => {
     }
 };
 
+const axios = require("axios");
 
+const generateFitnessPlan = async (req, res) => {
+  try {
+    console.log("FITNESS BODY:", req.body);
+
+    const { age, height, weight, goal, fitnessLevel, week } = req.body;
+
+    const prompt = `
+      Age: ${age}
+      Height: ${height}
+      Weight: ${weight}
+      Goal: ${goal}
+      Fitness Level: ${fitnessLevel}
+      Duration: ${week} weeks
+      
+      Generate a detailed weekly fitness plan only.
+    `;
+
+    const result = await axios.post(
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${process.env.GEMINI_API_KEY}`,
+      {
+        contents: [
+          {
+            parts: [{ text: prompt }]
+          }
+        ]
+      }
+    );
+
+    res.json({
+      success: true,
+      data: result.data.candidates[0].content.parts[0].text
+    });
+
+  } catch (err) {
+    console.error("FULL FITNESS GEMINI ERROR:", err.response?.data || err.message);
+    res.status(500).json({
+      success: false,
+      message: "Gemini failed"
+    });
+  }
+};
 const getPagination = (req, res) => {
     var errMsgs = [];
     if (!req.body.pageno) errMsgs.push("pageno is required");
@@ -297,4 +339,4 @@ const changestatus = (req, res) => {
             });
     }
 };
-module.exports = { add, getall, getSingle, update, getPagination, deleteOne,changestatus };
+module.exports = { add, getall, getSingle, update, getPagination, deleteOne,changestatus,generateFitnessPlan };

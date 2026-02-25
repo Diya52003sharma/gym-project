@@ -19,6 +19,8 @@ router.post('/login', userController.login)
 router.post("/register", fileUpload.single('profile'), customerController.register)
 router.post("/package/all", packageController.all)
 router.post("/confirm-payment", bookingController.confirmPayment);
+router.post("/diet/generate", dietPlanController.generateDietPlan)
+router.post("/fitness/generate", workOutController.generateFitnessPlan);
 router.use(require('../middleware/tokenChecker'))
 
 router.post("/update", fileUpload.single('profile'), customerController.update)
@@ -49,10 +51,12 @@ router.post("/workout/getsingle", workOutController.getSingle)
 router.post("/workout/getpagination", workOutController.getPagination)
 
 
+
 //diet
 router.post("/diet/all", dietPlanController.getall)
 router.post("/diet/getsingle", dietPlanController.getSingle)
-router.post("/diet/getpagination", dietPlanController.getPagination)
+// router.post("/diet/getpagination", dietPlanController.getPagination)
+
 
 router.post("/booking/add", bookingController.bookPackage)
 router.post("/booking/pay", bookingController.pay)

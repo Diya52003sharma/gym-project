@@ -1,4 +1,9 @@
 const dietPlanModel = require("./dietPlanModel");
+const axios = require("axios");
+
+
+
+/* ================= ADD DIET PLAN ================= */
 
 const add = (req, res) => {
     var errMsg = [];
@@ -8,6 +13,7 @@ const add = (req, res) => {
     if (!req.body.duration) errMsg.push("duration is required");
     if (!req.body.restrictions) errMsg.push("restrictions is required");
     if (!req.body.description) errMsg.push("description is required");
+
     if (errMsg.length > 0) {
         return res.json({
             status: 422,
@@ -16,14 +22,15 @@ const add = (req, res) => {
         });
     }
 
-    const newDietPlan = new dietPlanModel();
-    newDietPlan.customerId = req.body.customerId;
-    newDietPlan.trainerId = req.body.trainerId;
-    newDietPlan.dietPlanName = req.body.dietPlanName;
-    newDietPlan.restrictions = req.body.restrictions;
-    newDietPlan.description = req.body.description;
-    newDietPlan.duration = req.body.duration;
-    newDietPlan.isPublic = req.body.isPublic;
+    const newDietPlan = new dietPlanModel({
+        customerId: req.body.customerId,
+        trainerId: req.body.trainerId,
+        dietPlanName: req.body.dietPlanName,
+        restrictions: req.body.restrictions,
+        description: req.body.description,
+        duration: req.body.duration,
+        isPublic: req.body.isPublic
+    });
 
     newDietPlan.save()
         .then(planData => {
@@ -43,6 +50,74 @@ const add = (req, res) => {
             });
         });
 };
+
+
+
+/* ================= GEMINI DIET GENERATOR ================= */
+
+
+// const axios = require("axios");
+
+const generateDietPlan = async (req, res) => {
+  try {
+    console.log("BODY RECEIVED:", req.body);
+
+    const { age, height, weight, meals, purpose, week } = req.body;
+
+    const prompt = `
+      Age: ${age}
+      Height: ${height}
+      Weight: ${weight}
+      Meals per day: ${meals}
+      Duration: ${week} weeks
+      Purpose: ${purpose}
+      
+      Generate a detailed weekly diet plan only.
+    `;
+
+ const response = await axios.post(
+  "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent",
+  {
+    contents: [
+      {
+        parts: [{ text: prompt }]
+      }
+    ]
+  },
+  {
+    headers: {
+      "Content-Type": "application/json"
+    },
+    params: {
+      key: process.env.GEMINI_API_KEY
+    }
+  }
+);
+
+    const text =
+      response.data.candidates[0].content.parts[0].text;
+
+    res.json({
+      success: true,
+      data: text
+    });
+
+  } catch (error) {
+    console.log("FULL GEMINI ERROR:");
+    console.log(error.response?.data || error.message);
+
+    res.status(500).json({
+      success: false,
+      message: "Gemini API failed",
+      error: error.response?.data || error.message
+    });
+  }
+};
+
+// module.exports = { generateDietPlan };
+
+
+/* ================= GET ALL ================= */
 
 const getall = (req, res) => {
     dietPlanModel.find()
@@ -65,6 +140,10 @@ const getall = (req, res) => {
             });
         });
 };
+
+
+
+/* ================= GET SINGLE ================= */
 
 const getSingle = (req, res) => {
     if (!req.body._id) {
@@ -104,107 +183,46 @@ const getSingle = (req, res) => {
         });
 };
 
+
+
+/* ================= UPDATE ================= */
+
 const update = (req, res) => {
-    var errMsgs = [];
-    if (!req.body._id) errMsgs.push("_id is required!!");
-
-    if (errMsgs.length > 0) {
-        res.send({
-            status: 422,
-            success: false,
-            message: errMsgs
-        });
-    } else {
-        dietPlanModel.findOne({ _id: req.body._id })
-            .then(plan => {
-                if (!plan) {
-                    res.send({
-                        status: 404,
-                        success: false,
-                        message: "Diet plan not found"
-                    });
-                } else {
-                    if (req.body.customerId) plan.customerId = req.body.customerId;
-                    if (req.body.trainerId) plan.trainerId = req.body.trainerId;
-                    if (req.body.dietPlanName) plan.dietPlanName = req.body.dietPlanName;
-                    if (req.body.restrictions) plan.restrictions = req.body.restrictions;
-                    if (req.body.description) plan.description = req.body.description;
-                    if (req.body.duration) plan.duration = req.body.duration;
-                    if (req.body.isPublic !== undefined) plan.isPublic = req.body.isPublic;
-                    
-                    plan.save()
-                        .then(updatedPlan => {
-                            res.send({
-                                status: 200,
-                                success: true,
-                                message: "Diet plan updated successfully",
-                                data: updatedPlan
-                            });
-                        })
-                        .catch(err => {
-                            res.send({
-                                status: 500,
-                                success: false,
-                                message: "Internal server error",
-                                errmessages: err
-                            });
-                        });
-                }
-            })
-            .catch(err => {
-                res.send({
-                    status: 500,
-                    success: false,
-                    message: "Internal server error",
-                    errmessages: err
-                });
-            });
-    }
-};
-
-
-
-const getPagination = (req, res) => {
-    var errMsgs = [];
-    if (!req.body.pageno) errMsgs.push("pageno is required");
-    if (!req.body.limit) errMsgs.push("limit is required");
-
-    if (errMsgs.length > 0) {
+    if (!req.body._id) {
         return res.json({
             status: 422,
             success: false,
-            message: errMsgs
+            message: "_id is required!!"
         });
     }
 
-    const limit = parseInt(req.body.limit);
-    const pageno = parseInt(req.body.pageno);
-    const skip = pageno > 1 ? (pageno - 1) * limit : 0;
-
-    dietPlanModel.find()
-        .populate("customerId")
-        .populate("trainerId")
-        .skip(skip)
-        .limit(limit)
-        .then(plans => {
-            dietPlanModel.countDocuments()
-                .then(count => {
-                    res.json({
-                        status: 200,
-                        success: true,
-                        message: "Data loaded",
-                        totaldocuments: count,
-                        data: plans
-                    });
-                })
-                .catch(err => {
-                    res.json({
-                        status: 500,
-                        success: false,
-                        message: "Error counting documents",
-                        errmsg: err.message
-                    });
+    dietPlanModel.findOne({ _id: req.body._id })
+        .then(plan => {
+            if (!plan) {
+                return res.json({
+                    status: 404,
+                    success: false,
+                    message: "Diet plan not found"
                 });
+            }
+
+            if (req.body.customerId) plan.customerId = req.body.customerId;
+            if (req.body.trainerId) plan.trainerId = req.body.trainerId;
+            if (req.body.dietPlanName) plan.dietPlanName = req.body.dietPlanName;
+            if (req.body.restrictions) plan.restrictions = req.body.restrictions;
+            if (req.body.description) plan.description = req.body.description;
+            if (req.body.duration) plan.duration = req.body.duration;
+            if (req.body.isPublic !== undefined) plan.isPublic = req.body.isPublic;
+
+            return plan.save();
+        })
+        .then(updatedPlan => {
+            res.json({
+                status: 200,
+                success: true,
+                message: "Diet plan updated successfully",
+                data: updatedPlan
+            });
         })
         .catch(err => {
             res.json({
@@ -215,6 +233,10 @@ const getPagination = (req, res) => {
             });
         });
 };
+
+
+
+/* ================= DELETE ================= */
 
 const deleteOne = (req, res) => {
     if (!req.body._id) {
@@ -251,55 +273,13 @@ const deleteOne = (req, res) => {
         });
 };
 
-const changestatus = (req, res) => {
-    if (!req.body._id || req.body.status === undefined) {
-        res.send({
-            status: 422,
-            success: false,
-            message: "_id and status are required!!"
-        });
-    }
-    else {
-        dietPlanModel.findOne({ _id: req.body._id })
-            .then((dietPlanData) => {
-                if (!dietPlanData) {
-                    res.send({
-                        status: 404,
-                        success: false,
-                        message: "diet plan not found!!",
-                    });
-                }
-                else {
-                    dietPlanData.isPublic = req.body.status;
-                    dietPlanData.save()
-                        .then(() => {
-                            var statusMessage = req.body.status ? "public" : "private";
-                            res.send({
-                                status: 200,
-                                success: true,
-                                message: "diet plan " + statusMessage + " successfully",
-                                data: dietPlanData
-                            });
-                        })
-                        .catch((err) => {
-                            res.send({
-                                status: 500,
-                                success: false,
-                                message: "Failed to update status",
-                                errmessages: err
-                            });
-                        });
-                }
-            })
-            .catch((err) => {
-                res.send({
-                    status: 500,
-                    success: false,
-                    message: "Internal server error",
-                    errmessages: err
-                });
-            });
-    }
-};
 
-module.exports = { add, getall, getSingle, update, getPagination, deleteOne, changestatus };
+
+module.exports = {
+    add,
+    generateDietPlan,
+    getall,
+    getSingle,
+    update,
+    deleteOne
+};

@@ -7,11 +7,15 @@ const cors = require('cors');
 const path = require("path");
 
 // Middlewares
-app.use(cors());
+app.use(cors({
+  origin: "http://13.233.230.15",
+  credentials: true
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // Database
+require("dotenv").config()
 require('./server/config/db');
 require('./server/config/seed');
 
