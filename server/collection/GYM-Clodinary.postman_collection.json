@@ -1,0 +1,3111 @@
+{
+	"info": {
+		"_postman_id": "716b0038-b445-4581-973c-5a46b3aa2757",
+		"name": "GYM",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41749312",
+		"_collection_link": "https://backend-4309.postman.co/workspace/New-Team-Workspace~2a3d4a50-28de-4033-8549-f2f1e5ec5ed0/collection/41749312-716b0038-b445-4581-973c-5a46b3aa2757?action=share&source=collection_link&creator=41749312"
+	},
+	"item": [
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Auth",
+					"item": [
+						{
+							"name": "Login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "email",
+											"value": "admin@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "1234",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5000/admin/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"admin",
+										"login"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "trainer",
+					"item": [
+						{
+							"name": "Add Trainer",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2VjMjhjZmFhZDRjZDY1MmQ2OTY3ZGQiLCJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsIlVzZXJUeXBlIjoxLCJpYXQiOjE3NDM1ODQ5NzUsImV4cCI6MTc0MzY3MTM3NX0.yImX4SQvlEUiGKPudA4ofZpNW88oRpHoVIEHReyaMO8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "trainer",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "trainersall@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123",
+											"type": "text"
+										},
+										{
+											"key": "contact",
+											"value": "1234567890",
+											"type": "text"
+										},
+										{
+											"key": "address",
+											"value": "jalandhar",
+											"type": "text"
+										},
+										{
+											"key": "experience",
+											"value": "3 Years",
+											"type": "text"
+										},
+										{
+											"key": "profile",
+											"type": "file",
+											"src": "/C:/Users/dell/Downloads/logohsp.jpg"
+										},
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2VjMjhjZmFhZDRjZDY1MmQ2OTY3ZGQiLCJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsIlVzZXJUeXBlIjoxLCJpYXQiOjE3NDM1ODQ5NzUsImV4cCI6MTc0MzY3MTM3NX0.yImX4SQvlEUiGKPudA4ofZpNW88oRpHoVIEHReyaMO8",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5000/admin/trainer/add",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"admin",
+										"trainer",
+										"add"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Trainer",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "_id",
+											"value": "67f0c85dc682d58aa46056bd",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "trainer 1",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "trainer1@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "contact",
+											"value": "1234567890",
+											"type": "text"
+										},
+										{
+											"key": "address",
+											"value": "jalandhar",
+											"type": "text"
+										},
+										{
+											"key": "experience",
+											"value": "3 Years",
+											"type": "text"
+										},
+										{
+											"key": "profile",
+											"type": "file",
+											"src": "/C:/Users/dell/Downloads/istockphoto-471629610-612x612.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5000/admin/trainer/update",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"admin",
+										"trainer",
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Change Trainer Status",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "_id",
+											"value": "661e0f657b0f516a150339d6",
+											"type": "text"
+										},
+										{
+											"key": "status",
+											"value": "true",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseurl}}/admin/trainer/status",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"admin",
+										"trainer",
+										"status"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "change Trainer Password",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "_id",
+											"value": "661e0f657b0f516a150339d9",
+											"description": "user's  _id",
+											"type": "text"
+										},
+										{
+											"key": "currentPassword",
+											"value": "123",
+											"type": "text"
+										},
+										{
+											"key": "newPassword",
+											"value": "123",
+											"type": "text"
+										},
+										{
+											"key": "confirmPassword",
+											"value": "123",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseurl}}/admin/trainer/changePassword",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"admin",
+										"trainer",
+										"changePassword"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Single Trainer",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "_id",
+											"value": "661e0f657b0f516a150339d6",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseurl}}/admin/trainer/single",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"admin",
+										"trainer",
+										"single"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "All Trainers",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2VjMjhjZmFhZDRjZDY1MmQ2OTY3ZGQiLCJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsIlVzZXJUeXBlIjoxLCJpYXQiOjE3NDM1ODQ5NzUsImV4cCI6MTc0MzY3MTM3NX0.yImX4SQvlEUiGKPudA4ofZpNW88oRpHoVIEHReyaMO8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "http://localhost:5000/admin/trainer/all",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"admin",
+										"trainer",
+										"all"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "customer",
+					"item": [
+						{
+							"name": "Change Customer Status",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "_id",
+											"value": "661e1a4cda09f0112b791ea6",
+											"type": "text"
+										},
+										{
+											"key": "status",
+											"value": "true",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseurl}}/admin/customer/status",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"admin",
+										"customer",
+										"status"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Single Customer",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "_id",
+											"value": "661e1a4cda09f0112b791ea6",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseurl}}/admin/customer/single",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"admin",
+										"customer",
+										"single"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "All Customers",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "{{baseurl}}/admin/customer/all",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"admin",
+										"customer",
+										"all"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Packages",
+					"item": [
+						{
+							"name": "Add Package",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "package",
+											"type": "text"
+										},
+										{
+											"key": "duration",
+											"value": "3 months",
+											"type": "text"
+										},
+										{
+											"key": "price",
+											"value": "2000",
+											"type": "text"
+										},
+										{
+											"key": "features",
+											"value": "qwerty",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseurl}}/admin/package/add",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"admin",
+										"package",
+										"add"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Package",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "_id",
+											"value": "661e27b31340614c2892a7a0",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "package 1",
+											"type": "text"
+										},
+										{
+											"key": "duration",
+											"value": "2 months",
+											"type": "text"
+										},
+										{
+											"key": "price",
+											"value": "20003",
+											"type": "text"
+										},
+										{
+											"key": "features",
+											"value": "qwertyy",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseurl}}/admin/package/update",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"admin",
+										"package",
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Change Status",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "_id",
+											"value": "661e27b31340614c2892a7a0",
+											"type": "text"
+										},
+										{
+											"key": "status",
+											"value": "false",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseurl}}/admin/package/status",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"admin",
+										"package",
+										"status"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Single Package",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "_id",
+											"value": "661e27b31340614c2892a7a0",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseurl}}/admin/package/single",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"admin",
+										"package",
+										"single"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "All Packages",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "{{baseurl}}/admin/package/all",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"admin",
+										"package",
+										"all"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Assign Trainer",
+					"item": [
+						{
+							"name": "Assign trainer",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "customerId",
+											"value": "661e1a4cda09f0112b791ea6",
+											"type": "text"
+										},
+										{
+											"key": "trainerId",
+											"value": "661e0f657b0f516a150339d6",
+											"type": "text"
+										},
+										{
+											"key": "packageId",
+											"value": "661e27b31340614c2892a7a0",
+											"type": "text"
+										},
+										{
+											"key": "start",
+											"value": "2024-04-16T07:24:35.947+00:00",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseurl}}/admin/trainer/assign",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"admin",
+										"trainer",
+										"assign"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update assign trainer",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "_id",
+											"value": "661e2fe3b6475515815ec5d3",
+											"type": "text"
+										},
+										{
+											"key": "customerId",
+											"value": "661e1a4cda09f0112b791ea6",
+											"type": "text"
+										},
+										{
+											"key": "trainerId",
+											"value": "661e0f657b0f516a150339d6",
+											"type": "text"
+										},
+										{
+											"key": "packageId",
+											"value": "661e27b31340614c2892a7a0",
+											"type": "text"
+										},
+										{
+											"key": "start",
+											"value": "2024-04-16T07:24:35.947+00:00",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseurl}}/admin/trainer/assign/update",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"admin",
+										"trainer",
+										"assign",
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "all assign trainers",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "{{baseurl}}/admin/trainer/assign/all",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"admin",
+										"trainer",
+										"assign",
+										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Single assign trainers",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "{{baseurl}}/admin/trainer/assign/single",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"admin",
+										"trainer",
+										"assign",
+										"single"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "booking",
+					"item": [
+						{
+							"name": "booking status",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "_id",
+											"value": "661e4b297ffad0d5973688ca",
+											"type": "text"
+										},
+										{
+											"key": "status",
+											"value": "2",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseurl}}/admin/booking/status",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"admin",
+										"booking",
+										"status"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "all bookings",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "{{baseurl}}/admin/booking/all",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"admin",
+										"booking",
+										"all"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Query",
+					"item": [
+						{
+							"name": "change status",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2VjMjhjZmFhZDRjZDY1MmQ2OTY3ZGQiLCJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsIlVzZXJUeXBlIjoxLCJpYXQiOjE3NDM1ODQ5NzUsImV4cCI6MTc0MzY3MTM3NX0.yImX4SQvlEUiGKPudA4ofZpNW88oRpHoVIEHReyaMO8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "customerId",
+											"value": "661e4b297ffad0d5973688ca",
+											"type": "text"
+										},
+										{
+											"key": "trainerId",
+											"value": "67ed0010879ba812b7425010",
+											"type": "text"
+										},
+										{
+											"key": "dietPlanName",
+											"value": "dendee",
+											"type": "text"
+										},
+										{
+											"key": "restrictions",
+											"value": "dewde",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "wdwdwd",
+											"type": "text"
+										},
+										{
+											"key": "duration",
+											"value": "2",
+											"type": "text"
+										},
+										{
+											"key": "contact",
+											"value": "u321u",
+											"type": "text"
+										},
+										{
+											"key": "subject",
+											"value": "ude",
+											"type": "text"
+										},
+										{
+											"key": "message",
+											"value": "heloo",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5000/admin/query/changestatus",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"admin",
+										"query",
+										"changestatus"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "all",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2VjMjhjZmFhZDRjZDY1MmQ2OTY3ZGQiLCJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsIlVzZXJUeXBlIjoxLCJpYXQiOjE3NDM1ODQ5NzUsImV4cCI6MTc0MzY3MTM3NX0.yImX4SQvlEUiGKPudA4ofZpNW88oRpHoVIEHReyaMO8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "customerId",
+											"value": "661e4b297ffad0d5973688ca",
+											"type": "text"
+										},
+										{
+											"key": "trainerId",
+											"value": "67ed0010879ba812b7425010",
+											"type": "text"
+										},
+										{
+											"key": "dietPlanName",
+											"value": "dendee",
+											"type": "text"
+										},
+										{
+											"key": "restrictions",
+											"value": "dewde",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "wdwdwd",
+											"type": "text"
+										},
+										{
+											"key": "duration",
+											"value": "2",
+											"type": "text"
+										},
+										{
+											"key": "contact",
+											"value": "u321u",
+											"type": "text"
+										},
+										{
+											"key": "subject",
+											"value": "ude",
+											"type": "text"
+										},
+										{
+											"key": "message",
+											"value": "heloo",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5000/admin/query/all",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"admin",
+										"query",
+										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2VjMjhjZmFhZDRjZDY1MmQ2OTY3ZGQiLCJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsIlVzZXJUeXBlIjoxLCJpYXQiOjE3NDM1ODQ5NzUsImV4cCI6MTc0MzY3MTM3NX0.yImX4SQvlEUiGKPudA4ofZpNW88oRpHoVIEHReyaMO8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "http://localhost:5000/admin/query/delete",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"admin",
+										"query",
+										"delete"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "single",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2VjMjhjZmFhZDRjZDY1MmQ2OTY3ZGQiLCJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsIlVzZXJUeXBlIjoxLCJpYXQiOjE3NDM1ODQ5NzUsImV4cCI6MTc0MzY3MTM3NX0.yImX4SQvlEUiGKPudA4ofZpNW88oRpHoVIEHReyaMO8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "http://localhost:5000/admin/query/getsingle",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"admin",
+										"query",
+										"getsingle"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Customer",
+			"item": [
+				{
+					"name": "Auth",
+					"item": [
+						{
+							"name": "change Password",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "_id",
+											"value": "661e0f657b0f516a150339d9",
+											"description": "user's  _id",
+											"type": "text"
+										},
+										{
+											"key": "currentPassword",
+											"value": "123",
+											"type": "text"
+										},
+										{
+											"key": "newPassword",
+											"value": "123",
+											"type": "text"
+										},
+										{
+											"key": "confirmPassword",
+											"value": "123",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseurl}}/customer/changePassword",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"customer",
+										"changePassword"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "email",
+											"value": "admin@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "1234",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseurl}}/customer/login",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"customer",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Register",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "customer",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "customer@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123",
+											"type": "text"
+										},
+										{
+											"key": "contact",
+											"value": "123",
+											"type": "text"
+										},
+										{
+											"key": "gender",
+											"value": "male",
+											"type": "text"
+										},
+										{
+											"key": "address",
+											"value": "jalandhar",
+											"type": "text"
+										},
+										{
+											"key": "profile",
+											"type": "file",
+											"src": "/C:/Users/dell/Downloads/logohsp.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5000/customer/register",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"customer",
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Profile",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "_id",
+											"value": "67f0ca61ce0f0f10af4112a5",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "mohit@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "mohit",
+											"type": "text"
+										},
+										{
+											"key": "profile",
+											"type": "file",
+											"src": "/C:/Users/hp/Downloads/Photoshop/20230701133434_[fpdl.in]_man-holding-laptop_13339-84716_large.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5000/customer/update",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"customer",
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "view profile",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "{{baseurl}}/customer/single",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"customer",
+										"single"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Package",
+					"item": [
+						{
+							"name": "Book Package",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "packageId",
+											"value": "661e27b31340614c2892a7a0",
+											"type": "text"
+										},
+										{
+											"key": "customerId",
+											"value": "661e1a4cda09f0112b791ea6",
+											"type": "text"
+										},
+										{
+											"key": "bookingDate",
+											"value": "2024-04-17",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseurl}}/customer/package/book",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"customer",
+										"package",
+										"book"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Work Out",
+					"item": [
+						{
+							"name": "all",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2VjMjhjZmFhZDRjZDY1MmQ2OTY3ZGQiLCJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsIlVzZXJUeXBlIjoxLCJpYXQiOjE3NDM1ODQ5NzUsImV4cCI6MTc0MzY3MTM3NX0.yImX4SQvlEUiGKPudA4ofZpNW88oRpHoVIEHReyaMO8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "customerId",
+											"value": "661e4b297ffad0d5973688ca",
+											"type": "text"
+										},
+										{
+											"key": "trainerId",
+											"value": "67ed0010879ba812b7425010",
+											"type": "text"
+										},
+										{
+											"key": "workoutDescription",
+											"value": "defi",
+											"type": "text"
+										},
+										{
+											"key": "duration",
+											"value": "frfjrf",
+											"type": "text"
+										},
+										{
+											"key": "exercises",
+											"value": "def,ddcj,jj",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5000/customer/workout/all",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"customer",
+										"workout",
+										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getsingle",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2VjMjhjZmFhZDRjZDY1MmQ2OTY3ZGQiLCJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsIlVzZXJUeXBlIjoxLCJpYXQiOjE3NDM1ODQ5NzUsImV4cCI6MTc0MzY3MTM3NX0.yImX4SQvlEUiGKPudA4ofZpNW88oRpHoVIEHReyaMO8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "_id",
+											"value": "67ed02f3d2f3aa70fb1fc7f0",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5000/customer/workout/getsingle",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"customer",
+										"workout",
+										"getsingle"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "pagination",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2VjMjhjZmFhZDRjZDY1MmQ2OTY3ZGQiLCJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsIlVzZXJUeXBlIjoxLCJpYXQiOjE3NDM1ODQ5NzUsImV4cCI6MTc0MzY3MTM3NX0.yImX4SQvlEUiGKPudA4ofZpNW88oRpHoVIEHReyaMO8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "pageno",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "limit",
+											"value": "12",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5000/customer/workout/getpagination",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"customer",
+										"workout",
+										"getpagination"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Diet Plan",
+					"item": [
+						{
+							"name": "all",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2VjMjhjZmFhZDRjZDY1MmQ2OTY3ZGQiLCJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsIlVzZXJUeXBlIjoxLCJpYXQiOjE3NDM1ODQ5NzUsImV4cCI6MTc0MzY3MTM3NX0.yImX4SQvlEUiGKPudA4ofZpNW88oRpHoVIEHReyaMO8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "customerId",
+											"value": "661e4b297ffad0d5973688ca",
+											"type": "text"
+										},
+										{
+											"key": "trainerId",
+											"value": "67ed0010879ba812b7425010",
+											"type": "text"
+										},
+										{
+											"key": "workoutDescription",
+											"value": "defi",
+											"type": "text"
+										},
+										{
+											"key": "duration",
+											"value": "frfjrf",
+											"type": "text"
+										},
+										{
+											"key": "exercises",
+											"value": "def,ddcj,jj",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5000/customer/diet/all",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"customer",
+										"diet",
+										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getsingle",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2VjMjhjZmFhZDRjZDY1MmQ2OTY3ZGQiLCJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsIlVzZXJUeXBlIjoxLCJpYXQiOjE3NDM1ODQ5NzUsImV4cCI6MTc0MzY3MTM3NX0.yImX4SQvlEUiGKPudA4ofZpNW88oRpHoVIEHReyaMO8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "_id",
+											"value": "67ed10593a4fc207b8f3d1f6",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5000/customer/diet/getsingle",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"customer",
+										"diet",
+										"getsingle"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "pagination",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2VjMjhjZmFhZDRjZDY1MmQ2OTY3ZGQiLCJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsIlVzZXJUeXBlIjoxLCJpYXQiOjE3NDM1ODQ5NzUsImV4cCI6MTc0MzY3MTM3NX0.yImX4SQvlEUiGKPudA4ofZpNW88oRpHoVIEHReyaMO8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "pageno",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "limit",
+											"value": "12",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5000/customer/diet/getpagination",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"customer",
+										"diet",
+										"getpagination"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Query",
+					"item": [
+						{
+							"name": "add",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2VjMjhjZmFhZDRjZDY1MmQ2OTY3ZGQiLCJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsIlVzZXJUeXBlIjoxLCJpYXQiOjE3NDM1ODQ5NzUsImV4cCI6MTc0MzY3MTM3NX0.yImX4SQvlEUiGKPudA4ofZpNW88oRpHoVIEHReyaMO8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "customerId",
+											"value": "661e4b297ffad0d5973688ca",
+											"type": "text"
+										},
+										{
+											"key": "trainerId",
+											"value": "67ed0010879ba812b7425010",
+											"type": "text"
+										},
+										{
+											"key": "dietPlanName",
+											"value": "dendee",
+											"type": "text"
+										},
+										{
+											"key": "restrictions",
+											"value": "dewde",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "wdwdwd",
+											"type": "text"
+										},
+										{
+											"key": "duration",
+											"value": "2",
+											"type": "text"
+										},
+										{
+											"key": "contact",
+											"value": "u321u",
+											"type": "text"
+										},
+										{
+											"key": "subject",
+											"value": "ude",
+											"type": "text"
+										},
+										{
+											"key": "message",
+											"value": "heloo",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5000/customer/query/add",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"customer",
+										"query",
+										"add"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "add Copy",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2VjMjhjZmFhZDRjZDY1MmQ2OTY3ZGQiLCJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsIlVzZXJUeXBlIjoxLCJpYXQiOjE3NDM1ODQ5NzUsImV4cCI6MTc0MzY3MTM3NX0.yImX4SQvlEUiGKPudA4ofZpNW88oRpHoVIEHReyaMO8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "customerId",
+											"value": "661e4b297ffad0d5973688ca",
+											"type": "text"
+										},
+										{
+											"key": "trainerId",
+											"value": "67ed0010879ba812b7425010",
+											"type": "text"
+										},
+										{
+											"key": "dietPlanName",
+											"value": "dendee",
+											"type": "text"
+										},
+										{
+											"key": "restrictions",
+											"value": "dewde",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "wdwdwd",
+											"type": "text"
+										},
+										{
+											"key": "duration",
+											"value": "2",
+											"type": "text"
+										},
+										{
+											"key": "contact",
+											"value": "u321u",
+											"type": "text"
+										},
+										{
+											"key": "subject",
+											"value": "ude",
+											"type": "text"
+										},
+										{
+											"key": "message",
+											"value": "heloo",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5000/customer/query/add",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"customer",
+										"query",
+										"add"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2VjMjhjZmFhZDRjZDY1MmQ2OTY3ZGQiLCJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsIlVzZXJUeXBlIjoxLCJpYXQiOjE3NDM1ODQ5NzUsImV4cCI6MTc0MzY3MTM3NX0.yImX4SQvlEUiGKPudA4ofZpNW88oRpHoVIEHReyaMO8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "http://localhost:5000/customer/query/update",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"customer",
+										"query",
+										"update"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Trainer",
+			"item": [
+				{
+					"name": "Auth",
+					"item": [
+						{
+							"name": "Login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "email",
+											"value": "trainer@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "1234",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseurl}}/trainer/login",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"trainer",
+										"login"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "assing customers",
+					"item": [
+						{
+							"name": "all assign customers",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "trainerId",
+											"value": "661e0f657b0f516a150339d6",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseurl}}/trainer/assign/customers",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"trainer",
+										"assign",
+										"customers"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "session",
+					"item": [
+						{
+							"name": "add session",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "trainerId",
+											"value": "661e0f657b0f516a150339d6",
+											"type": "text"
+										},
+										{
+											"key": "customerId",
+											"value": "661e1a4cda09f0112b791ea6",
+											"type": "text"
+										},
+										{
+											"key": "week",
+											"value": "2024-04-16",
+											"type": "text"
+										},
+										{
+											"key": "diet",
+											"value": "qwerty",
+											"type": "text"
+										},
+										{
+											"key": "day1",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "day2",
+											"value": "2",
+											"type": "text"
+										},
+										{
+											"key": "day3",
+											"value": "3",
+											"type": "text"
+										},
+										{
+											"key": "day4",
+											"value": "4",
+											"type": "text"
+										},
+										{
+											"key": "day5",
+											"value": "5",
+											"type": "text"
+										},
+										{
+											"key": "day6",
+											"value": "6",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseurl}}/trainer/session/add",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"trainer",
+										"session",
+										"add"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update session",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "_id",
+											"value": "661e5da1694d268a937df41b",
+											"type": "text"
+										},
+										{
+											"key": "trainerId",
+											"value": "661e0f657b0f516a150339d6",
+											"type": "text"
+										},
+										{
+											"key": "customerId",
+											"value": "661e1a4cda09f0112b791ea6",
+											"type": "text"
+										},
+										{
+											"key": "week",
+											"value": "2024-04-16",
+											"type": "text"
+										},
+										{
+											"key": "diet",
+											"value": "qwe",
+											"type": "text"
+										},
+										{
+											"key": "day1",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "day2",
+											"value": "2",
+											"type": "text"
+										},
+										{
+											"key": "day3",
+											"value": "3",
+											"type": "text"
+										},
+										{
+											"key": "day4",
+											"value": "4",
+											"type": "text"
+										},
+										{
+											"key": "day5",
+											"value": "5",
+											"type": "text"
+										},
+										{
+											"key": "day6",
+											"value": "6",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseurl}}/trainer/session/update",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"trainer",
+										"session",
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "change session status",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "_id",
+											"value": "661e5da1694d268a937df41b",
+											"type": "text"
+										},
+										{
+											"key": "status",
+											"value": "true",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseurl}}/trainer/session/status",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"trainer",
+										"session",
+										"status"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "single session",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "_id",
+											"value": "661e5da1694d268a937df41b",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseurl}}/trainer/session/single",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"trainer",
+										"session",
+										"single"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "All session",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "{{baseurl}}/trainer/session/all",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"trainer",
+										"session",
+										"all"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Report",
+					"item": [
+						{
+							"name": "add report",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "trainerId",
+											"value": "661e0f657b0f516a150339d6",
+											"type": "text"
+										},
+										{
+											"key": "customerId",
+											"value": "661e1a4cda09f0112b791ea6",
+											"type": "text"
+										},
+										{
+											"key": "week",
+											"value": "2024-04-16",
+											"type": "text"
+										},
+										{
+											"key": "sessionScore",
+											"value": "8",
+											"type": "text"
+										},
+										{
+											"key": "dietScore",
+											"value": "5",
+											"type": "text"
+										},
+										{
+											"key": "height",
+											"value": "170",
+											"type": "text"
+										},
+										{
+											"key": "weight",
+											"value": "67",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseurl}}/trainer/report/add",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"trainer",
+										"report",
+										"add"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update report",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "_id",
+											"value": "661e696f9a7cc24e540ff582",
+											"type": "text"
+										},
+										{
+											"key": "height",
+											"value": "120",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseurl}}/trainer/report/update",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"trainer",
+										"report",
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete report",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "_id",
+											"value": "661e696f9a7cc24e540ff582",
+											"type": "text"
+										},
+										{
+											"key": "height",
+											"value": "120",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseurl}}/trainer/report/status",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"trainer",
+										"report",
+										"status"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "single Report",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "_id",
+											"value": "661e696f9a7cc24e540ff582",
+											"type": "text"
+										},
+										{
+											"key": "height",
+											"value": "120",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseurl}}/trainer/report/single",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"trainer",
+										"report",
+										"single"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "All Reports",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "height",
+											"value": "120",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseurl}}/trainer/report/all",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"trainer",
+										"report",
+										"all"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Work Out",
+					"item": [
+						{
+							"name": "add",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2VjMjhjZmFhZDRjZDY1MmQ2OTY3ZGQiLCJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsIlVzZXJUeXBlIjoxLCJpYXQiOjE3NDM1ODQ5NzUsImV4cCI6MTc0MzY3MTM3NX0.yImX4SQvlEUiGKPudA4ofZpNW88oRpHoVIEHReyaMO8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "customerId",
+											"value": "661e4b297ffad0d5973688ca",
+											"type": "text"
+										},
+										{
+											"key": "trainerId",
+											"value": "67ed0010879ba812b7425010",
+											"type": "text"
+										},
+										{
+											"key": "workoutDescription",
+											"value": "defi",
+											"type": "text"
+										},
+										{
+											"key": "duration",
+											"value": "frfjrf",
+											"type": "text"
+										},
+										{
+											"key": "exercises",
+											"value": "def,ddcj,jj",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5000/trainer/workout/add",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"trainer",
+										"workout",
+										"add"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "all",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2VjMjhjZmFhZDRjZDY1MmQ2OTY3ZGQiLCJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsIlVzZXJUeXBlIjoxLCJpYXQiOjE3NDM1ODQ5NzUsImV4cCI6MTc0MzY3MTM3NX0.yImX4SQvlEUiGKPudA4ofZpNW88oRpHoVIEHReyaMO8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "http://localhost:5000/trainer/workout/all",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"trainer",
+										"workout",
+										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2VjMjhjZmFhZDRjZDY1MmQ2OTY3ZGQiLCJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsIlVzZXJUeXBlIjoxLCJpYXQiOjE3NDM1ODQ5NzUsImV4cCI6MTc0MzY3MTM3NX0.yImX4SQvlEUiGKPudA4ofZpNW88oRpHoVIEHReyaMO8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "_id",
+											"value": "67ed02ccd2f3aa70fb1fc7ee",
+											"type": "text"
+										},
+										{
+											"key": "exercises",
+											"value": "nd e ,deid",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5000/trainer/workout/update",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"trainer",
+										"workout",
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2VjMjhjZmFhZDRjZDY1MmQ2OTY3ZGQiLCJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsIlVzZXJUeXBlIjoxLCJpYXQiOjE3NDM1ODQ5NzUsImV4cCI6MTc0MzY3MTM3NX0.yImX4SQvlEUiGKPudA4ofZpNW88oRpHoVIEHReyaMO8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "_id",
+											"value": "67ed02ccd2f3aa70fb1fc7ee",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5000/trainer/workout/delete",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"trainer",
+										"workout",
+										"delete"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "changestatus",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2VjMjhjZmFhZDRjZDY1MmQ2OTY3ZGQiLCJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsIlVzZXJUeXBlIjoxLCJpYXQiOjE3NDM1ODQ5NzUsImV4cCI6MTc0MzY3MTM3NX0.yImX4SQvlEUiGKPudA4ofZpNW88oRpHoVIEHReyaMO8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "_id",
+											"value": "67ed02ccd2f3aa70fb1fc7ee",
+											"type": "text"
+										},
+										{
+											"key": "status",
+											"value": "true",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5000/trainer/workout/changestatus",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"trainer",
+										"workout",
+										"changestatus"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getsingle",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2VjMjhjZmFhZDRjZDY1MmQ2OTY3ZGQiLCJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsIlVzZXJUeXBlIjoxLCJpYXQiOjE3NDM1ODQ5NzUsImV4cCI6MTc0MzY3MTM3NX0.yImX4SQvlEUiGKPudA4ofZpNW88oRpHoVIEHReyaMO8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "http://localhost:5000/admin/workout/all",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"admin",
+										"workout",
+										"all"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Diet Plan",
+					"item": [
+						{
+							"name": "add",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2VjMjhjZmFhZDRjZDY1MmQ2OTY3ZGQiLCJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsIlVzZXJUeXBlIjoxLCJpYXQiOjE3NDM1ODQ5NzUsImV4cCI6MTc0MzY3MTM3NX0.yImX4SQvlEUiGKPudA4ofZpNW88oRpHoVIEHReyaMO8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "customerId",
+											"value": "661e4b297ffad0d5973688ca",
+											"type": "text"
+										},
+										{
+											"key": "trainerId",
+											"value": "67ed0010879ba812b7425010",
+											"type": "text"
+										},
+										{
+											"key": "dietPlanName",
+											"value": "dendee",
+											"type": "text"
+										},
+										{
+											"key": "restrictions",
+											"value": "dewde",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "wdwdwd",
+											"type": "text"
+										},
+										{
+											"key": "duration",
+											"value": "2",
+											"type": "text"
+										},
+										{
+											"key": "",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5000/trainer/diet/add",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"trainer",
+										"diet",
+										"add"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "all",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2VjMjhjZmFhZDRjZDY1MmQ2OTY3ZGQiLCJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsIlVzZXJUeXBlIjoxLCJpYXQiOjE3NDM1ODQ5NzUsImV4cCI6MTc0MzY3MTM3NX0.yImX4SQvlEUiGKPudA4ofZpNW88oRpHoVIEHReyaMO8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "http://localhost:5000/trainer/diet/all",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"trainer",
+										"diet",
+										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2VjMjhjZmFhZDRjZDY1MmQ2OTY3ZGQiLCJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsIlVzZXJUeXBlIjoxLCJpYXQiOjE3NDM1ODQ5NzUsImV4cCI6MTc0MzY3MTM3NX0.yImX4SQvlEUiGKPudA4ofZpNW88oRpHoVIEHReyaMO8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "_id",
+											"value": "67ed10910444ce46edd7c6d9",
+											"type": "text"
+										},
+										{
+											"key": "exercises",
+											"value": "nd e ,deid",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5000/trainer/diet/update",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"trainer",
+										"diet",
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2VjMjhjZmFhZDRjZDY1MmQ2OTY3ZGQiLCJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsIlVzZXJUeXBlIjoxLCJpYXQiOjE3NDM1ODQ5NzUsImV4cCI6MTc0MzY3MTM3NX0.yImX4SQvlEUiGKPudA4ofZpNW88oRpHoVIEHReyaMO8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "_id",
+											"value": "67ed02ccd2f3aa70fb1fc7ee",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5000/trainer/diet/delete",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"trainer",
+										"diet",
+										"delete"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "changestatus",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2VjMjhjZmFhZDRjZDY1MmQ2OTY3ZGQiLCJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsIlVzZXJUeXBlIjoxLCJpYXQiOjE3NDM1ODQ5NzUsImV4cCI6MTc0MzY3MTM3NX0.yImX4SQvlEUiGKPudA4ofZpNW88oRpHoVIEHReyaMO8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "_id",
+											"value": "67ed10910444ce46edd7c6d9",
+											"type": "text"
+										},
+										{
+											"key": "status",
+											"value": "true",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5000/trainer/diet/changestatus",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"trainer",
+										"diet",
+										"changestatus"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getsingle",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2VjMjhjZmFhZDRjZDY1MmQ2OTY3ZGQiLCJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsIlVzZXJUeXBlIjoxLCJpYXQiOjE3NDM1ODQ5NzUsImV4cCI6MTc0MzY3MTM3NX0.yImX4SQvlEUiGKPudA4ofZpNW88oRpHoVIEHReyaMO8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "_id",
+											"value": "67ed10910444ce46edd7c6d9",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5000/trainer/diet/getsingle",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"trainer",
+										"diet",
+										"getsingle"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Query",
+					"item": [
+						{
+							"name": "add",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2VjMjhjZmFhZDRjZDY1MmQ2OTY3ZGQiLCJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsIlVzZXJUeXBlIjoxLCJpYXQiOjE3NDM1ODQ5NzUsImV4cCI6MTc0MzY3MTM3NX0.yImX4SQvlEUiGKPudA4ofZpNW88oRpHoVIEHReyaMO8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "customerId",
+											"value": "661e4b297ffad0d5973688ca",
+											"type": "text"
+										},
+										{
+											"key": "trainerId",
+											"value": "67ed0010879ba812b7425010",
+											"type": "text"
+										},
+										{
+											"key": "dietPlanName",
+											"value": "dendee",
+											"type": "text"
+										},
+										{
+											"key": "restrictions",
+											"value": "dewde",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "wdwdwd",
+											"type": "text"
+										},
+										{
+											"key": "duration",
+											"value": "2",
+											"type": "text"
+										},
+										{
+											"key": "contact",
+											"value": "u321u",
+											"type": "text"
+										},
+										{
+											"key": "subject",
+											"value": "ude",
+											"type": "text"
+										},
+										{
+											"key": "message",
+											"value": "heloo",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5000/trainer/query/add",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"trainer",
+										"query",
+										"add"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2VjMjhjZmFhZDRjZDY1MmQ2OTY3ZGQiLCJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsIlVzZXJUeXBlIjoxLCJpYXQiOjE3NDM1ODQ5NzUsImV4cCI6MTc0MzY3MTM3NX0.yImX4SQvlEUiGKPudA4ofZpNW88oRpHoVIEHReyaMO8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "_id",
+											"value": "67ed150a1c3fd364cd2d9f7c",
+											"type": "text"
+										},
+										{
+											"key": "message",
+											"value": "jasjot",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5000/trainer/query/update",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"trainer",
+										"query",
+										"update"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
