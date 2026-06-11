@@ -115,7 +115,7 @@ const bookPackage = async (req, res) => {
 //     }
 //   };
 
-pay = async (req, res) => {
+const pay = async (req, res) => {
     try {
 
         if (!req.body._id) {
